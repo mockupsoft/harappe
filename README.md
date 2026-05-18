@@ -35,12 +35,14 @@ Kahve / restoran siparişi: müşteri menü ve sepet, personel hazırlık ve yö
 | `HARAPPE_DB_USERNAME` | Kullanıcı |
 | `HARAPPE_DB_PASSWORD` | Şifre |
 | `HARAPPE_DB_CHARSET` | İsteğe bağlı (`utf8mb4`) |
+| `HARAPPE_DB_SSL` | `1` ise TLS (çoğu bulut MySQL için gerekli) |
+| `HARAPPE_DB_SSL_CA` | İsteğe bağlı: CA dosya yolu veya PEM metni |
 | `HARAPPE_ALLOWED_ORIGINS` | Özel alan adı kullanıyorsan tam URL’ler, virgülle |
 | `VITE_API_URL` | Genelde **boş bırak**; uygulama aynı origin üzerinden `/api` kullanır |
 
 MySQL Vercel üzerinde barındırılmaz; ücretsiz/ucuz seçenekler için kendi sağlayıcını (ör. bulut MySQL) kullan.
 
-4. Deploy sonrası şema uzak DB’de yoksa: yerelden `import-schema.php` ile uzak DB’ye bağlanarak veya `database/schema.sql` ile içe aktar.
+4. **Şema:** Sağlayıcı panelinde boş bir veritabanı oluştur. Ortamda `HARAPPE_DB_*` tanımlıyken yerelde `php scripts/import-schema.php` çalıştır → `database/schema-tables.sql` uygulanır. Laragon’da `HARAPPE_DB_HOST` yoksa tam kurulum için `database/schema.sql` kullanılır. Alternatif: phpMyAdmin / DBeaver ile `schema-tables.sql` içeriğini yapıştır.
 
 ---
 

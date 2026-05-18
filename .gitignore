@@ -2,8 +2,11 @@ node_modules/
 build/
 dist/
 api/config.local.php
+database/*.pem
 coverage/
 .DS_Store
 *.log
 .env*
 !.env.example
+
+.vercel
