@@ -21,6 +21,22 @@ Kahve / restoran siparişi: müşteri menü ve sepet, personel hazırlık ve yö
 
 ---
 
+## Docker ile yerel MySQL (Laragon MySQL’siz)
+
+**Gereksinimler:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) (veya Docker Engine + Compose).
+
+1. `copy .env.docker.example .env.docker` (Windows PowerShell: `Copy-Item .env.docker.example .env.docker`) — isteğe bağlı; varsayılanlar zaten `import-schema-docker.mjs` içinde.
+2. `npm run db:docker:setup` — MySQL’i `3307` portunda ayağa kaldırır ve `schema-tables.sql` uygular.
+3. API’nin bu veritabanına bağlanması için `api/config.docker.example.php` dosyasını `api/config.local.php` olarak kopyalayın (`Copy-Item api/config.docker.example.php api/config.local.php`).
+
+| Komut | Açıklama |
+|-------|-----------|
+| `npm run db:docker:up` | Sadece konteyner |
+| `npm run db:docker:import` | Konteyner çalışıyorken şemayı tekrar uygula |
+| `npm run db:docker:down` | Konteyneri durdur |
+
+---
+
 ## Vercel’e deploy
 
 1. [vercel.com](https://vercel.com) → **Add New Project** → GitHub’da `mockupsoft/harappe` deposunu bağla.
@@ -54,3 +70,4 @@ MySQL Vercel üzerinde barındırılmaz; ücretsiz/ucuz seçenekler için kendi 
 | `npm run build` | Üretim derlemesi |
 | `npm run lint` | TypeScript kontrolü |
 | `npm run smoke:api` | API duman testi (`API_BASE` veya `.env` içindeki `VITE_API_URL`) |
+| `npm run db:docker:setup` | Docker MySQL + şema (ilk kurulum) |

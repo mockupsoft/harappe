@@ -1,0 +1,29 @@
+# Harappe — yerel MySQL (Laragon’a takılmadan; Vercel’e benzer env ile test)
+# Kullanım: npm run db:docker:up  →  npm run db:docker:import
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: harappe-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: harappe
+      MYSQL_USER: harappe
+      MYSQL_PASSWORD: harappe_local_secret
+      MYSQL_ROOT_PASSWORD: harappe_root_local_only
+    ports:
+      - "3307:3306"
+    volumes:
+      - harappe_mysql_data:/var/lib/mysql
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-pharappe_root_local_only"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+volumes:
+  harappe_mysql_data:

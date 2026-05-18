@@ -14,6 +14,10 @@
     "lint": "tsc --noEmit",
     "smoke:api": "node scripts/api-smoke.mjs",
     "db:import": "php scripts/import-schema.php",
+    "db:docker:up": "docker compose up -d",
+    "db:docker:down": "docker compose down",
+    "db:docker:import": "node scripts/import-schema-docker.mjs",
+    "db:docker:setup": "docker compose up -d && node scripts/import-schema-docker.mjs",
     "import-menu": "node scripts/import-harappe-web-menu.mjs",
     "reset-legacy": "node scripts/run-reset-legacy.mjs"
   },
