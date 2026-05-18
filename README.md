@@ -60,6 +60,8 @@ MySQL Vercel üzerinde barındırılmaz; ücretsiz/ucuz seçenekler için kendi 
 
 4. **Şema:** Sağlayıcı panelinde boş bir veritabanı oluştur. Ortamda `HARAPPE_DB_*` tanımlıyken yerelde `php scripts/import-schema.php` çalıştır → `database/schema-tables.sql` uygulanır. Laragon’da `HARAPPE_DB_HOST` yoksa tam kurulum için `database/schema.sql` kullanılır. Alternatif: phpMyAdmin / DBeaver ile `schema-tables.sql` içeriğini yapıştır.
 
+> **Yerel MySQL’i Vercel’den “çekmek” mümkün değil** (Laragon/Docker sadece senin PC’nde). Canlı için **bulut MySQL** + Vercel’e env girmen gerekir. İsim listesi: [`.env.vercel.example`](.env.vercel.example) (değerleri panelde doldur, repoya şifre yazma).
+
 ---
 
 ## Komutlar
