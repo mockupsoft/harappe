@@ -3,8 +3,8 @@
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.9.0",
-      "memory": 1024,
-      "maxDuration": 15
+      "maxDuration": 15,
+      "excludeFiles": "{public/**,src/**,scripts/**,node_modules/**,.cursor/**,.github/**,dist/**,firebase-*.json,firestore.rules,metadata.json,database/**,package-lock.json,tsconfig.json,vite.config.ts,index.html,README.md}"
     }
   },
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
