@@ -1,6 +1,8 @@
 # Harappe — yerel MySQL (Laragon’a takılmadan; Vercel’e benzer env ile test)
 # Kullanım: npm run db:docker:up  →  npm run db:docker:import
 
+name: harappe
+
 services:
   mysql:
     image: mysql:8.4

@@ -71,3 +71,4 @@ MySQL Vercel üzerinde barındırılmaz; ücretsiz/ucuz seçenekler için kendi 
 | `npm run lint` | TypeScript kontrolü |
 | `npm run smoke:api` | API duman testi (`API_BASE` veya `.env` içindeki `VITE_API_URL`) |
 | `npm run db:docker:setup` | Docker MySQL + şema (ilk kurulum) |
+| `npm run verify:docker` | Konteyner + tablolar + PDO kontrolü |
