@@ -1,20 +1,54 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Harappe
 
-# Run and deploy your AI Studio app
+Kahve / restoran siparişi: müşteri menü ve sepet, personel hazırlık ve yönetim ekranları (Türkçe arayüz).
 
-This contains everything you need to run your app locally.
+**Yığın:** React 18, TypeScript, Vite 5, Tailwind v4, PHP + MySQL API (`api/`), oturum `harappe_session`.
 
-View your app in AI Studio: https://ai.studio/apps/a11580b7-8a55-4802-866b-4ec31b2aa81b
+**Kaynak kod:** [github.com/mockupsoft/harappe](https://github.com/mockupsoft/harappe)
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## Yerelde çalıştırma
 
+**Gereksinimler:** Node.js 18+ (öneri: 22), Laragon veya PHP 8.x + MySQL.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. `npm install`
+2. `.env.example` dosyasını `.env` olarak kopyala; `VITE_API_URL` için Laragon kökünü yaz (örn. `http://harappe.test/api`).
+3. MySQL şeması: `php scripts/import-schema.php` (önce `api/config.local.php` veya ortam değişkenleriyle DB bilgisini ayarla).
+4. `npm run dev` — varsayılan port `.env` içindeki `VITE_DEV_PORT` (örn. 5420).
+
+İsteğe bağlı: `GEMINI_API_KEY` (`.env`).
+
+---
+
+## Vercel’e deploy
+
+1. [vercel.com](https://vercel.com) → **Add New Project** → GitHub’da `mockupsoft/harappe` deposunu bağla.
+2. Build ayarları genelde otomatik algılanır (`npm run build`, çıktı `dist`). PHP uçları `vercel.json` içindeki **vercel-php** ile `api/*.php` olarak çalışır.
+3. **Environment Variables** (Production / Preview ihtiyacına göre):
+
+| Değişken | Açıklama |
+|----------|-----------|
+| `HARAPPE_DB_HOST` | Uzak MySQL sunucu adresi |
+| `HARAPPE_DB_PORT` | Genelde `3306` |
+| `HARAPPE_DB_DATABASE` | Veritabanı adı |
+| `HARAPPE_DB_USERNAME` | Kullanıcı |
+| `HARAPPE_DB_PASSWORD` | Şifre |
+| `HARAPPE_DB_CHARSET` | İsteğe bağlı (`utf8mb4`) |
+| `HARAPPE_ALLOWED_ORIGINS` | Özel alan adı kullanıyorsan tam URL’ler, virgülle |
+| `VITE_API_URL` | Genelde **boş bırak**; uygulama aynı origin üzerinden `/api` kullanır |
+
+MySQL Vercel üzerinde barındırılmaz; ücretsiz/ucuz seçenekler için kendi sağlayıcını (ör. bulut MySQL) kullan.
+
+4. Deploy sonrası şema uzak DB’de yoksa: yerelden `import-schema.php` ile uzak DB’ye bağlanarak veya `database/schema.sql` ile içe aktar.
+
+---
+
+## Komutlar
+
+| Komut | Açıklama |
+|-------|-----------|
+| `npm run dev` | Geliştirme sunucusu |
+| `npm run build` | Üretim derlemesi |
+| `npm run lint` | TypeScript kontrolü |
+| `npm run smoke:api` | API duman testi (`API_BASE` veya `.env` içindeki `VITE_API_URL`) |
