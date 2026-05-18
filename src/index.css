@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  --color-brand-cream: #FDFBF7;
+  --color-brand-primary: #FF6B00; /* Vibrant Harappe Orange */
+  --color-brand-dark: #000000;
+  --color-brand-muted: #F4F0E8;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-cream text-brand-dark font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight uppercase;
+  }
+}
+
+.coffee-card {
+  @apply bg-white rounded-[40px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-500 border border-brand-dark/5;
+}
+
+.primary-btn {
+  @apply bg-brand-primary text-white px-8 py-4 rounded-3xl font-display font-extrabold uppercase tracking-widest text-sm hover:brightness-110 active:scale-95 transition-all shadow-[0_10px_25px_-5px_rgba(255,107,0,0.3)];
+}
+
+.secondary-btn {
+  @apply bg-brand-dark text-white px-8 py-4 rounded-3xl font-display font-extrabold uppercase tracking-widest text-sm hover:bg-brand-dark/80 active:scale-95 transition-all;
+}
+
+.pill-shape {
+  @apply rounded-full;
+}
+
+.safe-area-bottom {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-primary/20 rounded-full;
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "Harappe Coffee",
+  "description": "Harappe Coffee için özel, pratik self-servis sipariş deneyimi. Taze kavrulmuş kahvelerimize göz at, masana sipariş ver ve baristanın hazırlık sürecini canlı takip et.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}

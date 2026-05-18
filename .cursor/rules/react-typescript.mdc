@@ -1,0 +1,20 @@
+---
+description: React ve TypeScript kalıpları — bileşenler, context, router
+globs: "**/*.{tsx,ts}"
+alwaysApply: false
+---
+
+# React / TypeScript
+
+- **Bileşenler**: Fonksiyonel bileşenler; sayfalar `src/pages/` altında.
+- **Context**: `useAuth` ve `useCart` yalnızca ilgili Provider içinde kullanılmalı; hook’lar `undefined` kontrolü ile hata fırlatır (`App.tsx`).
+- **Korumalı rotalar**: Admin sayfaları `PrivateRoute` ile `adminOnly`; oturum `LoginPage` / Firebase + `localStorage` `harappe_session`.
+- **İsimlendirme**: Türkçe kullanıcı metinleri mevcut dilde kalmalı; kod ve tip isimleri İngilizce (ör. `MenuItem`, `OrderStatus`).
+- **İçe aktarımlar**: Proje kökü için `@/` alias’ı (`vite.config.ts`); mevcut dosyalar göreli `./` kullanıyorsa yeni kodda tutarlılık için aynı stili tercih et.
+
+```tsx
+// Örnek: admin sayfası sarmalama
+<PrivateRoute adminOnly>
+  <AdminPage />
+</PrivateRoute>
+```

@@ -1,0 +1,14 @@
+---
+description: Tailwind v4 tema, marka renkleri ve yardımcı sınıflar
+globs: "**/*.{tsx,css}"
+alwaysApply: false
+---
+
+# Stil — Tailwind ve Harappe teması
+
+- **Tema**: `src/index.css` içinde `@theme` — `brand-cream`, `brand-primary`, `brand-dark`, `brand-muted`; fontlar `font-sans` (Inter), `font-display` (Outfit).
+- **Yardımcı sınıflar**: Kartlar için `coffee-card`, birincil/ikincil butonlar `primary-btn` / `secondary-btn`; mümkün olduğunda bunları tekrar kullan.
+- **Hareket**: Mikro etkileşimler için `framer-motion` (`motion`, `AnimatePresence`) mevcut kalıba uygun kullanılsın.
+- **İkonlar**: `lucide-react`; boyut ve renk için Tailwind sınıfları (`text-white/50`, `size={20}` vb.).
+
+Yeni ekranlarda alt gezinme için mevcut Navbar düzeni (`fixed bottom`, `rounded-full`, marka gölgeleri) ile görsel tutarlılık korunmalı.

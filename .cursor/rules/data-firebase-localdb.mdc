@@ -1,0 +1,14 @@
+---
+description: Veri katmanı — localDb, olaylar, Firebase
+globs: "src/lib/**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Veri: localDb ve Firebase
+
+- **localDb** (`src/lib/localDb.ts`): Menü, siparişler, profiller, masalar, fiyat logları `localStorage` anahtarlarıyla (`harappe_*`). Okuma/yazma sonrası ilgili custom event yayınlanır (`menu_updated`, `orders_updated`, `profile_updated`, `tables_updated`, `logs_updated`) — UI dinleyicileri buna göre güncellenir.
+- **Profil**: `saveProfile` / `getProfile` uid ile sözlük kullanır; admin bayrağı ve özel e-postalar `App.tsx` içindeki `loadProfile` ile uyumlu tutulmalı.
+- **Firebase**: `src/lib/firebase.ts` — `auth`, `db`; Firestore veritabanı kimliği JSON yapılandırmasından gelir. Yeni koleksiyon/kural değişikliklerinde `firestore.rules` gözden geçirilmeli.
+- **Tohum veriler**: `seedMenu.ts`, `seedTables.ts` ilk yüklemede `AppContent` içinde çağrılır; boş veri durumunu bozmadan genişlet.
+
+Yeni kalıcı alan eklerken önce `src/types/index.ts` güncelle, sonra `localDb` ve ilgili sayfaları senkronize et.

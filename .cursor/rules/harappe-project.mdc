@@ -1,0 +1,18 @@
+---
+description: Harappe projesi — mimari, yığın ve önemli dosyalar
+alwaysApply: true
+---
+
+# Harappe — Proje özeti
+
+- **Amaç**: Kahve/restoran siparişi; müşteri menü/sepet, admin hazırlık ve yönetim ekranları (Türkçe arayüz).
+- **Yığın**: React 18, TypeScript, Vite 5, React Router 6, Tailwind CSS v4 (`@tailwindcss/vite`), PHP/MySQL API (`api/`, Laragon), müşteri/personel oturumu `harappe_session` + `src/lib/localDb.ts`.
+- **Giriş**: `src/main.tsx` → `src/App.tsx` (AuthProvider, CartProvider, rotalar, Navbar).
+- **Tipler**: Ortak modeller `src/types/index.ts` içinde; yeni alanlar burada tanımlanmalı.
+- **Ortam**: `.env.example` — `GEMINI_API_KEY`, `APP_URL`, `VITE_API_URL`; Vite `define` ile `process.env.GEMINI_API_KEY` enjekte edilir.
+- **Kimlik**: Kayıt/giriş `api/auth.php` (`local_accounts`, şifre `password_hash`); oturum nesnesi `SessionUser` (`types`). Yönetici e-postaları `src/lib/adminPolicy.ts` ve sunucuda `auth.php` ile uyumlu tutulmalı.
+
+## Kod tarzı
+
+- Dosya başlığında Apache-2.0 lisans bloğu kullanılan dosyalarla uyumlu kal (yeni kritik dosyalarda aynı kalıp tercih edilir).
+- Kapsamlı refactor yapmadan istenen değişikliği yap; mevcut Context (`useAuth`, `useCart`) ve `PrivateRoute` kalıplarını koru.
